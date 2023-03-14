@@ -22,19 +22,19 @@ const Home = () => {
 						type="text" 
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
-						onKeyPress={(e) => {
+						onKeyDown={(e) => {
 							if (e.key === "Enter") {
-								setTodo(todo.concat(inputValue));
+								setTodo([...todo, inputValue]);
 								setInputValue("");
 							}
 						}}
 						placeholder="What do yo need to do?"></input>
 				</li>
 				{todo.map((item, index) => (
-					<li>
+					<li className="task" key = {index}>
 						{item} {""} 
 						<i
-						 class="fa-solid fa-xmark float-end" 
+						 className="fa-solid fa-xmark float-end button" 
 						 onClick={() => 
 							setTodo(
 								todo.filter(
@@ -46,8 +46,10 @@ const Home = () => {
 					</li>
 				))}
 			</ul>
+			{todo.length <= 0 ? 'No task' : ( 
 			<div><strong>{todo.length} Task</strong></div>
-			
+
+			) }
 		</div>
 	);
 };

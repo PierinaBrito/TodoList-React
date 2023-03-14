@@ -36,3 +36,11 @@ input{
     width: 100%;
     padding: 3px;
 }
+
+.button {
+    opacity: 0.5;
+}
+
+.task:hover > .button {
+    opacity: 1;
+}
